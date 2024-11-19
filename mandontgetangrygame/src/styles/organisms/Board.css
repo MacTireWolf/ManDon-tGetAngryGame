@@ -1,0 +1,12 @@
+@import "../Consts.css";
+
+.Board {
+    position: absolute;            
+    top: 50%;                           
+    left: 50%;                         
+    transform: translate(-50%, -50%);  
+    width: 700px;                      
+    height: 680px;                     
+    background-color: var(--BoardBackgroundColour);
+    border-radius: 8px;               
+}

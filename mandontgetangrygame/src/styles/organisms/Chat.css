@@ -1,19 +1,20 @@
+@import "../Consts.css";
 .Chat {
     position: fixed;
-    bottom: 0;
-    left: 0;
+    bottom: 200px;
+    left: 8px;
     width: 400px;
     height: 200px;
-    border: 2px solid var(--InputAndBorderColour);
+    border: 2px solid var(--InputAndBorderChatColour);
     background-color: var(--webPageBackgroundColour);
     padding: 10px;
     box-sizing: border-box;
-    color: var(--InputAndBorderColour);
+    color: var(--InputBorderAndBoardBackgroundColour);
 }
 
 .Chat input {
     background-color: var(--webPageBackgroundColour)4;
-    color: var(--InputAndBorderColour);
+    color: var(--InputAndBorderChatColour);
     border: none;
     width: 100%;
     height: 40px;
@@ -23,6 +24,6 @@
 }
 
 .Chat input::placeholder {
-    color: var(--InputAndBorderColour);
+    color: var(--InputAndBorderChatColour);
     opacity: 1;
 }

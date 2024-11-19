@@ -1,4 +1,5 @@
 :root{
     --webPageBackgroundColour: #282c34;
-    --InputAndBorderColour: white;
+    --BoardBackgroundColour: white;
+    --InputAndBorderChatColour: white;
 }
