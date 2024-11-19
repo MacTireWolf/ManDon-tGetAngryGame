@@ -1,0 +1,5 @@
+@import "../Consts.css";
+.WebPage{
+    background-color: var(--webPageBackgroundColour);
+    height: 100vh;
+}
