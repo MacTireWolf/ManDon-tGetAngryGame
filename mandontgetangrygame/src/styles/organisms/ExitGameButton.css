@@ -1,0 +1,23 @@
+@import "../Consts.css";
+
+.ExitGameButton {
+    position: fixed;
+    top: 20px;          
+    right: 100px;          
+    z-index: 1000;       
+}
+
+.ExitGameButton button {
+    padding: 10px 20px;    
+    font-size: 16px;      
+    background-color: var(--ExitGameButtonBackgroundColour); 
+    color: black;         
+    border: none;         
+    border-radius: 5px;   
+    cursor: pointer;     
+    transition: background-color 0.3s;
+}
+
+.ExitGameButton button:hover {
+    background-color: #ff4d4d;
+}

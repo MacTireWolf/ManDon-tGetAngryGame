@@ -1,8 +1,9 @@
 @import "../Consts.css";
+
 .Chat {
     position: fixed;
     bottom: 200px;
-    left: 8px;
+    left: 40px;
     width: 400px;
     height: 200px;
     border: 2px solid var(--InputAndBorderChatColour);
