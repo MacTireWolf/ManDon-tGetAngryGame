@@ -13,7 +13,7 @@
     background-color: var(--ExitGameButtonBackgroundColour); 
     color: black;         
     border: none;         
-    border-radius: 5px;   
+    border-radius: var(--BorderRadius);   
     cursor: pointer;     
     transition: background-color 0.3s;
 }

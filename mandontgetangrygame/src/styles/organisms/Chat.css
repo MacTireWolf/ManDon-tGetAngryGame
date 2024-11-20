@@ -10,6 +10,7 @@
     background-color: var(--webPageBackgroundColour);
     padding: 10px;
     box-sizing: border-box;
+    border-radius: var(--BorderRadius);
     color: var(--InputBorderAndBoardBackgroundColour);
 }
 

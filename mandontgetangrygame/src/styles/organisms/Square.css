@@ -1,0 +1,27 @@
+@import "../Consts.css";
+
+.Square {
+    width: 40%;  
+    height: 40%; 
+    position: absolute; 
+}
+
+.square-red {
+    background-color: red;
+    border-top-left-radius: var(--BorderRadius);
+}
+
+.square-blue {
+    background-color: blue;
+    border-top-right-radius: var(--BorderRadius);
+}
+
+.square-green {
+    background-color: green;
+    border-bottom-left-radius: var(--BorderRadius);
+}
+
+.square-yellow {
+    background-color: yellow;
+    border-bottom-right-radius: var(--BorderRadius);
+}

@@ -1,0 +1,12 @@
+/* src/styles/atoms/Triangle.css */
+
+.Triangle {
+
+  border-left: 70px solid transparent;  /* Half of the base width */
+  border-right: 70px solid transparent; /* Half of the base width */
+  border-top: 70px solid blue;         /* Height for an equilateral triangle */
+  position: absolute;
+  top: 50%; /* Position the triangle vertically in the center */
+  left: 50%; /* Position it horizontally in the center */
+  
+}

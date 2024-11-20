@@ -3,4 +3,6 @@
     --BoardBackgroundColour: white;
     --InputAndBorderChatColour: white;
     --ExitGameButtonBackgroundColour: white;
+    --SquareWithinSquareBackgroundColour: white;
+    --BorderRadius: 2%;
 }
