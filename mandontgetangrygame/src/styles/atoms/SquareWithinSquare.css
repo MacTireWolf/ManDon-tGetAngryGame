@@ -1,10 +1,10 @@
 @import "../Consts.css";
 
 .SquareWithinSquare {
-    width: 50%;  
-    height: 50%; 
+    width: 60%;  
+    height: 60%; 
     position: relative; 
-    background-color: var(--SquareWithinSquareBackgroundColour);
+    background-color: white;
     border-radius: var(--BorderRadius);
     top: 50%;
     left: 50%;

@@ -10,18 +10,16 @@
 }
   
 .grid-container-yellow .grid-item.highlight {
-    background-color: yellow;
-    color: black;
+    background-color: var(--PrettyYellow);
 }
   
 .grid-container-yellow .grid-item.normal {
     background-color: white;
-    color: black;
 }
 
 .yellow-arrow {
     font-size: 32px;
-    color: yellow;
+    color: var(--PrettyYellow);
     text-align: center;
   }
   

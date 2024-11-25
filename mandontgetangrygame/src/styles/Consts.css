@@ -1,8 +1,5 @@
 :root{
     --webPageBackgroundColour: #282c34;
-    --BoardBackgroundColour: white;
-    --InputAndBorderChatColour: white;
-    --ExitGameButtonBackgroundColour: white;
-    --SquareWithinSquareBackgroundColour: white;
     --BorderRadius: 2%;
+    --PrettyYellow: #f5e118;
 }

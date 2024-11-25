@@ -8,7 +8,7 @@
     width: 700px;                      
     height: 660px;  
     border-radius: var(--BorderRadius);                   
-    background-color: var(--BoardBackgroundColour);               
+    background-color: white;               
 }
 
 .horizontal-cells-container {

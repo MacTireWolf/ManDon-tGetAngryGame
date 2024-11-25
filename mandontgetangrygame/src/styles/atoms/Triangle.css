@@ -15,7 +15,7 @@
 .triangle-yellow {
   border-left: 70px solid transparent;
   border-right: 70px solid transparent;
-  border-top: 70px solid yellow;
+  border-top: 70px solid var(--PrettyYellow);
   transform: translateX(26%) translateY(50%) rotate(90deg);
 }
 

@@ -16,12 +16,10 @@
 
 .grid-container-blue .grid-item.highlight {
     background-color: blue;
-    color: black;
 }
 
 .grid-container-blue .grid-item.normal {
     background-color: white;
-    color: black;
 }
 
 .blue-arrow {

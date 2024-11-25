@@ -22,6 +22,24 @@
 }
 
 .square-yellow {
-    background-color: yellow;
+    background-color: var(--PrettyYellow) ;
     border-bottom-right-radius: var(--BorderRadius);
+}
+
+.player-name {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    z-index: 1;
+}
+
+.player-name.top {
+    top: 5%;
+}
+
+.player-name.bottom {
+    bottom: 5%;
 }

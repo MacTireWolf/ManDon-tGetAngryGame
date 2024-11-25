@@ -10,7 +10,7 @@
 .ExitGameButton button {
     padding: 10px 20px;    
     font-size: 16px;      
-    background-color: var(--ExitGameButtonBackgroundColour); 
+    background-color: white; 
     color: black;         
     border: none;         
     border-radius: var(--BorderRadius);   

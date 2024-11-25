@@ -6,17 +6,16 @@
     left: 40px;
     width: 400px;
     height: 200px;
-    border: 2px solid var(--InputAndBorderChatColour);
+    border: 2px solid white;
     background-color: var(--webPageBackgroundColour);
     padding: 10px;
     box-sizing: border-box;
     border-radius: var(--BorderRadius);
-    color: var(--InputBorderAndBoardBackgroundColour);
 }
 
 .Chat input {
     background-color: var(--webPageBackgroundColour)4;
-    color: var(--InputAndBorderChatColour);
+    color: white;
     border: none;
     width: 100%;
     height: 40px;
@@ -26,6 +25,6 @@
 }
 
 .Chat input::placeholder {
-    color: var(--InputAndBorderChatColour);
+    color: white;
     opacity: 1;
 }
