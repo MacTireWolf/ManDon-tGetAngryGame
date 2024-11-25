@@ -1,22 +1,22 @@
 import React from "react";
-import "../styles/atoms/YellowHorizontalCells.css";
+import "../styles/atoms/BlueVerticalCells.css";
 
-const YellowHorizontalCells = () => {
+const BlueVerticalCells = () => {
   const cells = [
     { id: 1, className: "normal" },
-    { id: 2, className: "normal" },
+    { id: 2, className: "normal", content: ">" },
     { id: 3, className: "normal" },
     { id: 4, className: "normal" },
-    { id: 5, className: "normal" },
-    { id: 6, className: "normal" },
-    { id: 7, className: "highlight" },
+    { id: 5, className: "highlight" },
+    { id: 6, className: "highlight" },
+    { id: 7, className: "normal" },
     { id: 8, className: "highlight" },
-    { id: 9, className: "highlight" },
-    { id: 10, className: "highlight" },
+    { id: 9, className: "normal" },
+    { id: 10, className: "normal" },
     { id: 11, className: "highlight" },
-    { id: 12, className: "normal", content: "<" },
+    { id: 12, className: "normal" },
     { id: 13, className: "normal" },
-    { id: 14, className: "normal" },
+    { id: 14, className: "highlight" },
     { id: 15, className: "normal" },
     { id: 16, className: "normal" },
     { id: 17, className: "highlight" },
@@ -24,14 +24,14 @@ const YellowHorizontalCells = () => {
   ];
 
   return (
-    <div className="grid-container-yellow">
+    <div className="grid-container-blue">
       {cells.map((cell) => (
         <div key={cell.id} className={`grid-item ${cell.className}`}>
-          {cell.content && <span className="yellow-arrow">{cell.content}</span>}
+          {cell.content && <span className="blue-arrow">{cell.content}</span>}
         </div>
       ))}
     </div>
   );
 };
 
-export default YellowHorizontalCells;
+export default BlueVerticalCells;

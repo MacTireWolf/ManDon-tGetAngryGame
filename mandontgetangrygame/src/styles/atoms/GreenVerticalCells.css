@@ -1,0 +1,32 @@
+.grid-container-green {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 43px);
+    width: 140px;
+    transform: translateY(-1px);
+}
+
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.grid-container-green .grid-item.highlight {
+    background-color: green;
+    color: black;
+}
+
+.grid-container-green .grid-item.normal {
+    background-color: white;
+    color: black;
+}
+
+.green-arrow {
+    font-size: 32px;
+    color: green;
+    text-align: center;
+    transform: rotate(90deg);
+}

@@ -1,0 +1,32 @@
+.grid-container-blue {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 43px);
+    width: 140px;
+    transform: translateY(1px);
+}
+
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.grid-container-blue .grid-item.highlight {
+    background-color: blue;
+    color: black;
+}
+
+.grid-container-blue .grid-item.normal {
+    background-color: white;
+    color: black;
+}
+
+.blue-arrow {
+    font-size: 32px;
+    color: blue;
+    text-align: center;
+    transform: rotate(90deg);
+}

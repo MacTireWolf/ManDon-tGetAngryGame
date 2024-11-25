@@ -4,6 +4,8 @@ import Square from "../organisms/Square";
 import Center from "../organisms/Center";
 import RedHorizontalCells from "../atoms/RedHorizontalCells";
 import YellowHorizontalCells from "../atoms/YellowHorizontalCells";
+import BlueVerticalCells from "../atoms/BlueVerticalCells";
+import GreenVerticalCells from "../atoms/GreenVerticalCells";
 
 const Board = () => {
   
@@ -17,6 +19,10 @@ const Board = () => {
       <div className="horizontal-cells-container">
         <RedHorizontalCells />
         <YellowHorizontalCells />
+      </div>
+      <div className="vertical-cells-container">
+        <BlueVerticalCells />
+        <GreenVerticalCells />
       </div>
     </div>
   );
