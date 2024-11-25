@@ -10,3 +10,13 @@
     border-radius: var(--BorderRadius);                   
     background-color: var(--BoardBackgroundColour);               
 }
+
+.horizontal-cells-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+  }

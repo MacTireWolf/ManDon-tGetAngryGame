@@ -2,6 +2,8 @@ import React from "react";
 import "../styles/components/Board.css";
 import Square from "../organisms/Square";
 import Center from "../organisms/Center";
+import RedHorizontalCells from "../atoms/RedHorizontalCells";
+import YellowHorizontalCells from "../atoms/YellowHorizontalCells";
 
 const Board = () => {
   
@@ -12,6 +14,10 @@ const Board = () => {
       <Square colour="green" style={{ bottom: 0, left: 0 }} />
       <Square colour="yellow" style={{ bottom: 0, right: 0 }} />
       <Center/>
+      <div className="horizontal-cells-container">
+        <RedHorizontalCells />
+        <YellowHorizontalCells />
+      </div>
     </div>
   );
 };

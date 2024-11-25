@@ -1,0 +1,21 @@
+.grid-container-yellow {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 46px);
+    width: 279px;
+    position: absolute;
+    right: 0;
+    height: 210px;
+    transform: translateY(-3px);
+}
+  
+.grid-container-yellow .grid-item.highlight {
+    background-color: yellow;
+    color: black;
+}
+  
+.grid-container-yellow .grid-item.normal {
+    background-color: white;
+    color: black;
+}
+  
