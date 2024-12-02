@@ -5,18 +5,20 @@
   import Chat from "../organisms/Chat";
   import Board from "./Board";
   import ExitGameButton from "../organisms/ExitGameButton";
+  import Cube from "./Cube";
 
   const WebPage = () => {
     const title = "Chińczyk"
     
     return (
       <div className="WebPage">
-          <Helmet>
-            <title>{title}</title>
-          </Helmet>
-          <Chat/>
-          <Board/>
-          <ExitGameButton/>
+        <Helmet>
+          <title>{title}</title>
+        </Helmet>
+        <Chat/>
+        <Board/>
+        <ExitGameButton/>
+        <Cube dots={6}/>
       </div>
       
       

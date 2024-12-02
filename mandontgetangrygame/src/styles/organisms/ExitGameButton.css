@@ -2,8 +2,8 @@
 
 .ExitGameButton {
     position: fixed;
-    top: 20px;          
-    right: 100px;          
+    top: 4%;          
+    right: 2%;          
     z-index: 1000;       
 }
 
