@@ -5,7 +5,7 @@
   import Chat from "../organisms/Chat";
   import Board from "./Board";
   import ExitGameButton from "../organisms/ExitGameButton";
-  import Cube from "./Cube";
+  import Cube from "../organisms/Cube";
 
   const WebPage = () => {
     const title = "Chińczyk"

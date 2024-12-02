@@ -4,24 +4,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>playersNamesBackend</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>org.example</groupId> <!-- Kept the original groupId -->
+    <artifactId>playersNamesBackend</artifactId> <!-- Kept the original artifactId -->
+    <version>1.0-SNAPSHOT</version> <!-- Kept the original version -->
+    <name>playersNamesBackend</name> <!-- Kept the original name -->
+    <description>Demo project for Spring Boot</description> <!-- Kept the description -->
 
-    <properties>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>22</java.version>
-    </properties>
-
-    <!-- Add Spring Boot Starter Parent -->
+    <!-- Spring Boot Starter Parent (Updated version) -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.0</version> <!-- or latest version -->
+        <version>3.3.4</version> <!-- Updated to match first POM version -->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+    <properties>
+        <java.version>17</java.version> <!-- Updated to match first POM (Java 17 instead of 22) -->
+    </properties>
 
     <dependencies>
         <!-- Spring Boot Web Starter: Includes dependencies for building RESTful web services -->
@@ -30,14 +29,14 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Spring Boot DevTools (optional for easier development, such as automatic restarts) -->
+        <!-- Lombok: For code generation (optional) -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
 
-        <!-- Spring Boot Starter Test: To help with unit and integration tests -->
+        <!-- Spring Boot Starter Test: For unit and integration tests -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -47,10 +46,19 @@
 
     <build>
         <plugins>
-            <!-- Spring Boot Maven Plugin: To run and build the Spring Boot application -->
+            <!-- Spring Boot Maven Plugin: For building and running the Spring Boot application -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <!-- Exclude Lombok from the final packaged JAR -->
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -1,0 +1,1 @@
+export const backendPlayersNamesAdress = "http://localhost:8080/players";
