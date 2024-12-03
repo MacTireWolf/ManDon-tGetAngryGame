@@ -1,1 +1,1 @@
-export const backendPlayersNamesAdress = "http://localhost:8080/players";
+export const backendPlayersNamesAdress = "http://localhost:8080/game";

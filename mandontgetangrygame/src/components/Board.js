@@ -19,15 +19,14 @@ const Board = forwardRef((_, ref) => {
   const getData = () => {
     axios.get(backendPlayersNamesAdress + "/getPlayers").then((response) => {
       console.log(response.data);
-      setPlayerNames(response.data);
+      setPlayerNames({
+        red: response.data.red ? response.data.red.name : "",
+        blue: response.data.blue ? response.data.blue.name : "",
+        green: response.data.green ? response.data.green.name : "",
+        yellow: response.data.yellow ? response.data.yellow.name : "",
+      });
     }).catch((error) => console.error(error));
   }
-  const [pawns, setPawns] = useState({
-    red: 4,
-    blue: 4,
-    green: 4,
-    yellow: 4,
-  });
 
   useEffect(() => {
     getData();
@@ -38,10 +37,10 @@ const Board = forwardRef((_, ref) => {
   
   return (
     <div className="Board">
-      <Square colour="red" style={{ top: 0, left: 0 }} playerName={playersNames.red} pawns={pawns.red}/>
-      <Square colour="blue" style={{ top: 0, right: 0 }} playerName={playersNames.blue} pawns={pawns.blue}/>
-      <Square colour="green" style={{ bottom: 0, left: 0 }} playerName={playersNames.green} pawns={pawns.green}/>
-      <Square colour="yellow" style={{ bottom: 0, right: 0 }} playerName={playersNames.yellow} pawns={pawns.yellow} />
+      <Square colour="red" style={{ top: 0, left: 0 }} playerName={playersNames.red}/>
+      <Square colour="blue" style={{ top: 0, right: 0 }} playerName={playersNames.blue}/>
+      <Square colour="green" style={{ bottom: 0, left: 0 }} playerName={playersNames.green}/>
+      <Square colour="yellow" style={{ bottom: 0, right: 0 }} playerName={playersNames.yellow}/>
       <Center/>
       <div className="horizontal-cells-container">
         <RedHorizontalCells />
