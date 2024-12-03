@@ -7,18 +7,30 @@
   import ExitGameButton from "../organisms/ExitGameButton";
   import Cube from "../organisms/Cube";
   import PlayerInputModal from "./PlayerInputModal";
+import axios from "axios";
+import { backendPlayersNamesAdress } from "../Consts";
 
   const WebPage = () => {
     const title = "Chińczyk"
     const boardRef = useRef(null);
     const [isModalOpen, setIsModalOpen] = useState(true);
-    const handleCloseModal = () => {
+    const [playerColour, setPlayerColour] = useState(null);
+    const handleCloseModal = (colour) => {
       setIsModalOpen(false);
+      setPlayerColour(colour);
     }
     const refreshPlayers = () => {
       if(boardRef.current){
         boardRef.current.getData();
       }
+    };
+
+    const deletePlayer = (colour) => {
+      axios.delete(backendPlayersNamesAdress + `/deletePlayer/${colour}`).then((response) => {
+        console.log(response.data);
+        refreshPlayers();
+        window.close();
+      }).catch((error) => {console.error(error)});
     };
     
     return (
@@ -28,13 +40,13 @@
         </Helmet>
         {isModalOpen && (
         <PlayerInputModal
-          onClose={handleCloseModal}
+          onClose={(_, colour) => handleCloseModal(colour)}
           refreshPlayers={refreshPlayers}
         />
         )}
         <Chat/>
         <Board ref={boardRef}/>
-        <ExitGameButton/>
+        <ExitGameButton onExitGame={deletePlayer} colour={playerColour}/>
         <Cube dots={6}/>
       </div>
       

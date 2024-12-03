@@ -16,25 +16,35 @@ public class GameController {
 
     @PostMapping("/addPlayer")
     public ResponseEntity<String> addPlayer(@RequestBody Player player){
-        if(players.containsKey(player.getColour())){
+        if(this.players.containsKey(player.getColour())){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Player already exists for this color");
         }
-        players.put(player.getColour(), player);
-        return ResponseEntity.ok(players.toString());
+        this.players.put(player.getColour(), player);
+        return ResponseEntity.ok(this.players.toString());
     }
 
     @GetMapping("/getPlayers")
     public ResponseEntity<Map<String, Player>> getPlayers(){
-        return ResponseEntity.ok(players);
+        return ResponseEntity.ok(this.players);
     }
 
     @PostMapping("/movePawn")
     public ResponseEntity<Player> movePawn(@RequestBody MoveRequest moveRequest){
-        Player player = players.get(moveRequest.getColour());
+        Player player = this.players.get(moveRequest.getColour());
         if (player != null){
             player.movePawn(moveRequest.getPawnId(), moveRequest.getSteps());
             return ResponseEntity.ok(player);
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+    }
+
+    @DeleteMapping("/deletePlayer/{colour}")
+    public ResponseEntity<String> deletePlayer(@PathVariable(value = "colour") String colour){
+        if (players == null || !this.players.containsKey(colour)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Player not found or invalid request.");
+        }
+
+        this.players.remove(colour);
+        return ResponseEntity.ok("Player deleted");
     }
 }

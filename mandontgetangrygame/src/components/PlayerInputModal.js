@@ -22,7 +22,7 @@ const PlayerInputModal = ({ onClose, refreshPlayers }) => {
       .then((response) => {
         console.log(response.data);
         refreshPlayers();
-        onClose();
+        onClose(playerName, colour);
       })
       .catch((error) => console.error(error));
   };

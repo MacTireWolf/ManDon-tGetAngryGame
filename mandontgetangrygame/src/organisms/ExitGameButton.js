@@ -1,11 +1,10 @@
 import React from "react";
 import "../styles/organisms/ExitGameButton.css";
 
-const ExitGameButton = () => {
-  
+const ExitGameButton = ({onExitGame, colour}) => {
   return (
     <div className="ExitGameButton">
-        <button>Opuść grę</button>
+        <button onClick={ () => onExitGame(colour)}>Opuść grę</button>
     </div>
   );
 };
