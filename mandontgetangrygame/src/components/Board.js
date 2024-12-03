@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import axios from 'axios';
 import "../styles/components/Board.css";
 import Square from "../organisms/Square";
@@ -9,8 +9,7 @@ import BlueVerticalCells from "../atoms/BlueVerticalCells";
 import GreenVerticalCells from "../atoms/GreenVerticalCells";
 import { backendPlayersNamesAdress } from "../Consts.js";
 
-const Board = () => {
-
+const Board = forwardRef((props, ref) => {
   const[playersNames, setPlayerNames] = useState({
     red: "",
     blue: "",
@@ -23,16 +22,13 @@ const Board = () => {
       setPlayerNames(response.data);
     }).catch((error) => console.error(error));
   }
-  const addPlayers = () => {
-    axios.post(backendPlayersNamesAdress + "/setNames").then((response) => {
-      console.log(response.data);
-      getData();
-    }).catch((error) => console.error(error));
-  }
 
   useEffect(() => {
     getData();
   },[]);
+  useImperativeHandle(ref, () => ({
+    getData,
+  }));
   
   return (
     <div className="Board">
@@ -51,6 +47,6 @@ const Board = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Board;

@@ -4,6 +4,8 @@ import com.playersNames.playersNames.model.Player;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/players")
 public class PlayerController {
@@ -15,11 +17,23 @@ public class PlayerController {
     }
 
     @PostMapping("/setNames")
-    public ResponseEntity<Player> setNames(@RequestBody Player playerName){
-        currentPlayers.setRed(playerName.getRed());
-        currentPlayers.setBlue(playerName.getBlue());
-        currentPlayers.setYellow(playerName.getYellow());
-        currentPlayers.setGreen(playerName.getGreen());
+    public ResponseEntity<Player> setNames(@RequestBody Map<String, String> playerName){
+        playerName.forEach((colour, name) -> {
+            switch (colour.toLowerCase()){
+                case "red":
+                    currentPlayers.setRed(name);
+                    break;
+                case "blue":
+                    currentPlayers.setBlue(name);
+                    break;
+                case "yellow":
+                    currentPlayers.setYellow(name);
+                    break;
+                case "green":
+                    currentPlayers.setGreen(name);
+                    break;
+            }
+        });
         return ResponseEntity.ok().body(currentPlayers);
     }
 }
