@@ -9,7 +9,7 @@ import BlueVerticalCells from "../atoms/BlueVerticalCells";
 import GreenVerticalCells from "../atoms/GreenVerticalCells";
 import { backendPlayersNamesAdress } from "../Consts.js";
 
-const Board = forwardRef((props, ref) => {
+const Board = forwardRef((_, ref) => {
   const[playersNames, setPlayerNames] = useState({
     red: "",
     blue: "",
@@ -22,6 +22,12 @@ const Board = forwardRef((props, ref) => {
       setPlayerNames(response.data);
     }).catch((error) => console.error(error));
   }
+  const [pawns, setPawns] = useState({
+    red: 4,
+    blue: 4,
+    green: 4,
+    yellow: 4,
+  });
 
   useEffect(() => {
     getData();
@@ -32,10 +38,10 @@ const Board = forwardRef((props, ref) => {
   
   return (
     <div className="Board">
-      <Square colour="red" style={{ top: 0, left: 0 }} playerName={playersNames.red}/>
-      <Square colour="blue" style={{ top: 0, right: 0 }} playerName={playersNames.blue}/>
-      <Square colour="green" style={{ bottom: 0, left: 0 }} playerName={playersNames.green}/>
-      <Square colour="yellow" style={{ bottom: 0, right: 0 }} playerName={playersNames.yellow} />
+      <Square colour="red" style={{ top: 0, left: 0 }} playerName={playersNames.red} pawns={pawns.red}/>
+      <Square colour="blue" style={{ top: 0, right: 0 }} playerName={playersNames.blue} pawns={pawns.blue}/>
+      <Square colour="green" style={{ bottom: 0, left: 0 }} playerName={playersNames.green} pawns={pawns.green}/>
+      <Square colour="yellow" style={{ bottom: 0, right: 0 }} playerName={playersNames.yellow} pawns={pawns.yellow} />
       <Center/>
       <div className="horizontal-cells-container">
         <RedHorizontalCells />

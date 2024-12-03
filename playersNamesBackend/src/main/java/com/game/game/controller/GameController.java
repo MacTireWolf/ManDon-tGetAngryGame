@@ -8,8 +8,8 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/players")
-public class PlayerController {
-    private Player currentPlayers = new Player("", "", "", "");
+public class GameController {
+
 
     @GetMapping("/getPlayers")
     public ResponseEntity<Player> getPlayers(){
