@@ -16,7 +16,7 @@ const WebPage = () => {
   const [playerColour, setPlayerColour] = useState(null);
   const [players, setPlayers] = useState([]);
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
-  const [dots, setDots] = useState(0);
+  const [dots, setDots] = useState(6);
   const [isRolling, setIsRolling] = useState(false);
 
   const handleCloseModal = (name, colour) => {
@@ -27,20 +27,16 @@ const WebPage = () => {
       { name, colour },
     ]);
   };
-
   const refreshPlayers = () => {
     axios
-      .get(backendPlayersNamesAdress + "/getPlayers")
-      .then((response) => {
+      .get(backendPlayersNamesAdress + "/getPlayers").then((response) => {
         setPlayers(Object.values(response.data));
       })
       .catch((error) => console.error("Error fetching players:", error));
   };
-
   const deletePlayer = (colour) => {
     axios
-      .delete(backendPlayersNamesAdress + `/deletePlayer/${colour}`)
-      .then((response) => {
+      .delete(backendPlayersNamesAdress + `/deletePlayer/${colour}`).then((response) => {
         console.log(response.data);
         refreshPlayers();
         window.close();
@@ -49,14 +45,12 @@ const WebPage = () => {
         console.error(error);
       });
   };
-
   const handleCubeClick = () => {
     const randomDots = Math.floor(Math.random() * 6) + 1;
     setDots(randomDots);
     setIsRolling(true);
     sendMoveRequest(randomDots);
   };
-
   const sendMoveRequest = (dots) => {
     const currentPlayer = players[currentPlayerIndex];
 
@@ -79,11 +73,9 @@ const WebPage = () => {
         setIsRolling(false);
       });
   };
-
   const nextPlayer = () => {
     setCurrentPlayerIndex((prevIndex) => (prevIndex + 1) % players.length);
   };
-
   const getCubePosition = (colour) => {
     switch (colour) {
       case "blue":
