@@ -10,7 +10,7 @@ const Square = ({ colour, style, playerName }) => {
       <div className={`player-name ${isTopPosition ? "top" : "bottom"}`}>
         {playerName}
       </div>
-      <SquareWithinSquare />
+      <SquareWithinSquare squareColour={colour}/>
     </div>
   );
 };

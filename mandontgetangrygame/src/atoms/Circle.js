@@ -1,10 +1,13 @@
 import React from "react";
 import "../styles/atoms/Circle.css";
+import Pawn from "./Pawn";
 
-const Circle = ({style}) => {
+const Circle = ({style, colour}) => {
   
   return (
-    <div className="Circle" style={style}></div>
+    <div className="Circle" style={style}>
+      <Pawn colour={colour}/>
+    </div>
   );
 };
 

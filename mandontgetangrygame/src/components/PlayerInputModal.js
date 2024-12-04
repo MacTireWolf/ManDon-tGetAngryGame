@@ -24,7 +24,13 @@ const PlayerInputModal = ({ onClose, refreshPlayers }) => {
         refreshPlayers();
         onClose(playerName, colour);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        if (error.response && error.response.data === "Player already exists for this color") {
+          alert("Ten kolor został już zajęty przez innego gracza.");
+        } else {
+          console.error(error);
+        }
+      });
   };
 
   return (
