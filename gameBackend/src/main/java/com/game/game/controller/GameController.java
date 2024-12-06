@@ -28,16 +28,6 @@ public class GameController {
         return ResponseEntity.ok(this.players);
     }
 
-    @PostMapping("/movePawn")
-    public ResponseEntity<Player> movePawn(@RequestBody MoveRequest moveRequest){
-        Player player = this.players.get(moveRequest.getColour());
-        if (player != null){
-            player.movePawn(moveRequest.getPawnId(), moveRequest.getSteps());
-            return ResponseEntity.ok(player);
-        }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-    }
-
     @DeleteMapping("/deletePlayer/{colour}")
     public ResponseEntity<String> deletePlayer(@PathVariable(value = "colour") String colour){
         if (players == null || !this.players.containsKey(colour)) {
@@ -46,5 +36,15 @@ public class GameController {
 
         this.players.remove(colour);
         return ResponseEntity.ok("Player deleted");
+    }
+
+    @PostMapping("/movePawn")
+    public ResponseEntity<Player> movePawn(@RequestBody MoveRequest moveRequest){
+        Player player = this.players.get(moveRequest.getColour());
+        if (player != null){
+            player.movePawn(moveRequest.getPawnId(), moveRequest.getSteps());
+            return ResponseEntity.ok(player);
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
     }
 }
