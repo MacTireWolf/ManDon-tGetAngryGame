@@ -104,7 +104,7 @@ const WebPage = () => {
           refreshPlayers={refreshPlayers}
         />
       )}
-      <Chat />
+      <Chat playerName={players[currentPlayerIndex]?.name || "Anonymous"}/>
       <Board players={players} setPlayers={setPlayers} />
       <ExitGameButton onExitGame={deletePlayer} colour={playerColour} />
       <div className="cube-container" style={cubePosition}>

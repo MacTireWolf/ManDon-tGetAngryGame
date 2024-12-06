@@ -5,26 +5,48 @@
     bottom: 200px;
     left: 40px;
     width: 400px;
-    height: 200px;
+    height: 250px;
     border: 2px solid white;
     background-color: var(--webPageBackgroundColour);
     padding: 10px;
     box-sizing: border-box;
     border-radius: var(--BorderRadius);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.Chat .messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding-right: 10px;
+}
+
+.Chat .messages div {
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: var(--BackgroundColourForMessages);
+    border-radius: var(--BorderRadius);
+    word-wrap: break-word;
+    font-size: 14px;
+    color: var(--textColor);
 }
 
 .Chat input {
-    background-color: var(--webPageBackgroundColour)4;
-    color: white;
+    background-color: var(--webPageBackgroundColour);
+    color: var(--textColor);
     border: none;
-    width: 100%;
+    width: calc(100% - 50px);
     height: 40px;
     padding: 5px;
     font-size: 16px;
     box-sizing: border-box;
+    border-radius: var(--BorderRadius);
+    margin-right: 10px;
 }
 
 .Chat input::placeholder {
-    color: white;
-    opacity: 1;
+    color: var(--textColor);
+    opacity: 0.8;
 }
