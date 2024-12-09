@@ -19,24 +19,25 @@ const WebPage = () => {
   const [dots, setDots] = useState(6);
   const [isRolling, setIsRolling] = useState(false);
 
-  const handleCloseModal = (name, colour) => {
+  const handleCloseModal = (newPlayers) => {
     setIsModalOpen(false);
-    setPlayerColour(colour);
-    setPlayers((prevPlayers) => [
-      ...prevPlayers,
-      { name, colour },
-    ]);
+    setPlayers((prevPlayers) => [...prevPlayers, ...newPlayers]);
+    if (newPlayers.length > 0) setPlayerColour(newPlayers[0].colour);
   };
+
   const refreshPlayers = () => {
     axios
-      .get(backendPlayersNamesAdress + "/getPlayers").then((response) => {
+      .get(backendPlayersNamesAdress + "/getPlayers")
+      .then((response) => {
         setPlayers(Object.values(response.data));
       })
       .catch((error) => console.error("Error fetching players:", error));
   };
+
   const deletePlayer = (colour) => {
     axios
-      .delete(backendPlayersNamesAdress + `/deletePlayer/${colour}`).then((response) => {
+      .delete(backendPlayersNamesAdress + `/deletePlayer/${colour}`)
+      .then((response) => {
         console.log(response.data);
         refreshPlayers();
         window.close();
@@ -45,12 +46,14 @@ const WebPage = () => {
         console.error(error);
       });
   };
+
   const handleCubeClick = () => {
     const randomDots = Math.floor(Math.random() * 6) + 1;
     setDots(randomDots);
     setIsRolling(true);
     sendMoveRequest(randomDots);
   };
+
   const sendMoveRequest = (dots) => {
     const currentPlayer = players[currentPlayerIndex];
 
@@ -73,9 +76,11 @@ const WebPage = () => {
         setIsRolling(false);
       });
   };
+
   const nextPlayer = () => {
     setCurrentPlayerIndex((prevIndex) => (prevIndex + 1) % players.length);
   };
+
   const getCubePosition = (colour) => {
     switch (colour) {
       case "blue":
@@ -104,15 +109,11 @@ const WebPage = () => {
           refreshPlayers={refreshPlayers}
         />
       )}
-      <Chat playerName={players[currentPlayerIndex]?.name || "Anonymous"}/>
+      <Chat />
       <Board players={players} setPlayers={setPlayers} />
       <ExitGameButton onExitGame={deletePlayer} colour={playerColour} />
       <div className="cube-container" style={cubePosition}>
-        <Cube 
-          dots={dots} 
-          onClick={handleCubeClick} 
-          disabled={isRolling}
-        />
+        <Cube dots={dots} onClick={handleCubeClick} disabled={isRolling} />
       </div>
     </div>
   );

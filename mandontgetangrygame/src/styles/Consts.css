@@ -1,7 +1,8 @@
-:root{
+:root {
     --webPageBackgroundColour: #282c34;
     --BackgroundColourForMessages: #3c4048;
-    --textColor: #ffffff; 
+    --textColor: #ffffff;
     --BorderRadius: 2%;
-    --PrettyYellow: #f5e118; 
+    --PrettyYellow: #f5e118;
+    --ButtonBackgroundColor: #007bff;
 }
