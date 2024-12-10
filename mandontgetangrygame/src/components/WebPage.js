@@ -16,8 +16,9 @@ const WebPage = () => {
   const [playerColour, setPlayerColour] = useState(null);
   const [players, setPlayers] = useState([]);
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
-  const [dots, setDots] = useState(6);
+  const [dots, setDots] = useState(3);
   const [isRolling, setIsRolling] = useState(false);
+  const [selectedPawnId, setSelectedPawnId] = useState(null);
 
   const handleCloseModal = (newPlayers) => {
     setIsModalOpen(false);
@@ -48,28 +49,52 @@ const WebPage = () => {
   };
 
   const handleCubeClick = () => {
+    if(!selectedPawnId){
+      alert("Wybierz pionek, którym chcesz się ruszyć.");
+      return;
+    }
+
     const randomDots = Math.floor(Math.random() * 6) + 1;
     setDots(randomDots);
     setIsRolling(true);
-    sendMoveRequest(randomDots);
+    sendMoveRequest(randomDots, selectedPawnId);
   };
 
-  const sendMoveRequest = (dots) => {
+  const sendMoveRequest = (dots, pawnId) => {
     const currentPlayer = players[currentPlayerIndex];
 
     if (!currentPlayer) return;
 
+    const selectedPawn = currentPlayer.pawns.find(pawn => pawn.id === pawnId);
+
+    if(!selectedPawn){
+      console.error("Pawn not found.");
+      setIsRolling(false);
+      return;
+    }
+
+    if(selectedPawn.position === 0 && dots !== 6){
+      console.log("Pawn needs a 6 to move onto the board. Try again.");
+      setIsRolling(false);
+      return;
+    }
+
+    const requestData = {
+      colour: currentPlayer.colour,
+      pawnId: pawnId,
+      steps: dots,
+    };
+    console.log('Sending request:', requestData);
+
     axios
-      .post(backendPlayersNamesAdress + `/movePawn`, {
-        colour: currentPlayer.colour,
-        pawnId: 1,
-        steps: dots,
-      })
-      .then((response) => {
+      .post(backendPlayersNamesAdress + `/movePawn`, requestData).then((response) => {
         console.log("Pawn moved:", response.data);
         refreshPlayers();
         setIsRolling(false);
-        nextPlayer();
+
+        if(dots === 6 || selectedPawn.position !== 0){
+          nextPlayer();
+        }
       })
       .catch((error) => {
         console.error("Error moving pawn:", error);
@@ -79,7 +104,10 @@ const WebPage = () => {
 
   const nextPlayer = () => {
     setCurrentPlayerIndex((prevIndex) => (prevIndex + 1) % players.length);
+    setSelectedPawnId(null);
   };
+
+  console.log("Selected Pawn ID:", selectedPawnId);
 
   const getCubePosition = (colour) => {
     switch (colour) {
@@ -110,7 +138,7 @@ const WebPage = () => {
         />
       )}
       <Chat />
-      <Board players={players} setPlayers={setPlayers} />
+      <Board players={players} setPlayers={setPlayers} setSelectedPawnId={setSelectedPawnId}/>
       <ExitGameButton onExitGame={deletePlayer} colour={playerColour} />
       <div className="cube-container" style={cubePosition}>
         <Cube dots={dots} onClick={handleCubeClick} disabled={isRolling} />

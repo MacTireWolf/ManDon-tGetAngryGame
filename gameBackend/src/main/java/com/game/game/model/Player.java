@@ -29,8 +29,23 @@ public class Player {
         return pawns;
     }
 
+    public void setPawns(List<Pawn> pawns) {
+        this.pawns = pawns;
+    }
+
     public void movePawn(Integer pawnId, Integer steps) {
+
         Pawn pawn = pawns.get(pawnId - 1);
-        pawn.setPosition(pawn.getPosition() + steps);
+
+        if (pawn.getPosition() == 0 && steps == 6) {
+            switch (colour) {
+                case "red": pawn.setPosition(2); break;
+                case "blue": pawn.setPosition(6); break;
+                case "yellow": pawn.setPosition(17); break;
+                case "green": pawn.setPosition(13); break;
+            }
+        } else {
+            pawn.setPosition(pawn.getPosition() + steps);
+        }
     }
 }
