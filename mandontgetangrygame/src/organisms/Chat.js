@@ -54,7 +54,7 @@ const Chat = ({ playerName }) => {
             <div className="messages">
                 {messages.map((msg, index) => (
                     <div key={index}>
-                        <strong>{msg.sender}:</strong>{msg.content}
+                        <strong>{msg.sender}: </strong>{msg.content}
                     </div>
                 ))}
             </div>

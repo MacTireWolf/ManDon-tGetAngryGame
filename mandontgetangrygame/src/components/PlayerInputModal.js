@@ -84,8 +84,8 @@ const PlayerInputModal = ({ onClose, refreshPlayers }) => {
               <option value="">Wybierz kolor</option>
               <option value="red">Czerwony</option>
               <option value="blue">Niebieski</option>
-              <option value="green">Zielony</option>
               <option value="yellow">Żółty</option>
+              <option value="green">Zielony</option>
             </select>
           </div>
         ))}
