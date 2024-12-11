@@ -5,7 +5,7 @@
     bottom: 200px;
     left: 40px;
     width: 400px;
-    height: 300px;
+    height: 250px;
     border: 2px solid white;
     background-color: var(--webPageBackgroundColour);
     padding: 10px;
@@ -14,39 +14,6 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    justify-content: center;
-}
-
-.Chat .name-input {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-.Chat .name-input input {
-    background-color: var(--webPageBackgroundColour);
-    color: var(--textColor);
-    border: none;
-    width: 80%;
-    height: 40px;
-    padding: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
-    border-radius: var(--BorderRadius);
-    margin-bottom: 10px;
-}
-
-.Chat .name-input button {
-    background-color: var(--ButtonBackgroundColor);
-    color: white;
-    border: none;
-    width: 80%;
-    height: 40px;
-    font-size: 16px;
-    border-radius: var(--BorderRadius);
-    cursor: pointer;
 }
 
 .Chat .messages {
@@ -66,13 +33,7 @@
     color: var(--textColor);
 }
 
-.Chat .message-input {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.Chat .message-input input {
+.Chat input {
     background-color: var(--webPageBackgroundColour);
     color: var(--textColor);
     border: none;
@@ -82,19 +43,10 @@
     font-size: 16px;
     box-sizing: border-box;
     border-radius: var(--BorderRadius);
+    margin-right: 10px;
 }
 
-.Chat .message-input input::placeholder {
+.Chat input::placeholder {
     color: var(--textColor);
     opacity: 0.8;
-}
-
-.Chat .message-input button {
-    background-color: var(--ButtonBackgroundColor);
-    color: white;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: var(--BorderRadius);
-    cursor: pointer;
 }

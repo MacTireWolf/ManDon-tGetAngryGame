@@ -28,6 +28,11 @@ const Board = ({ players, setSelectedPawnId  }) => {
     }
   }, [players, playersNames]);
 
+  const getPawnPositions = (colour) => {
+    const player = players.find((p) => p.colour === colour);
+    return player && player.pawns ? player.pawns.map((pawn) => pawn.position) : [];
+  };   
+
   return (
     <div className="Board">
       <Square colour="red" style={{ top: 0, left: 0 }} playerName={playersNames.red} pawns={players.find(p => p.colour === "red")?.pawns} setSelectedPawnId={setSelectedPawnId} />
@@ -36,12 +41,12 @@ const Board = ({ players, setSelectedPawnId  }) => {
       <Square colour="yellow" style={{ bottom: 0, right: 0 }} playerName={playersNames.yellow} pawns={players.find(p => p.colour === "yellow")?.pawns} setSelectedPawnId={setSelectedPawnId} />
       <Center />
       <div className="horizontal-cells-container">
-        <RedHorizontalCells />
-        <YellowHorizontalCells />
+        <RedHorizontalCells positions={getPawnPositions("red")}/>
+        <YellowHorizontalCells positions={getPawnPositions("yellow")}/>
       </div>
       <div className="vertical-cells-container">
-        <BlueVerticalCells />
-        <GreenVerticalCells />
+        <BlueVerticalCells positions={getPawnPositions("blue")}/>
+        <GreenVerticalCells positions={getPawnPositions("green")}/>
       </div>
     </div>
   );

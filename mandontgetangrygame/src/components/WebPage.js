@@ -26,7 +26,7 @@ const WebPage = () => {
     if (newPlayers.length > 0) setPlayerColour(newPlayers[0].colour);
   };
 
-  const refreshPlayers = () => {
+  const refreshPlayers = async () => {
     axios
       .get(backendPlayersNamesAdress + "/getPlayers")
       .then((response) => {
@@ -89,7 +89,10 @@ const WebPage = () => {
     axios
       .post(backendPlayersNamesAdress + `/movePawn`, requestData).then((response) => {
         console.log("Pawn moved:", response.data);
-        refreshPlayers();
+        const updatedPlayer = response.data;
+        setPlayers((prevPlayers) =>
+        prevPlayers.map((player) => 
+        player.colour === updatedPlayer.colour ? updatedPlayer : player));
         setIsRolling(false);
 
         if(dots === 6 || selectedPawn.position !== 0){
@@ -103,8 +106,13 @@ const WebPage = () => {
   };
 
   const nextPlayer = () => {
-    setCurrentPlayerIndex((prevIndex) => (prevIndex + 1) % players.length);
-    setSelectedPawnId(null);
+    setCurrentPlayerIndex((prevIndex) => {
+      const newIndex = (prevIndex + 1) % players.length;
+      setPlayerColour(players[newIndex]?.colour);
+      return newIndex;
+    });
+    setDots(3);
+    setTimeout(() => setSelectedPawnId(null), 100);
   };
 
   console.log("Selected Pawn ID:", selectedPawnId);
@@ -137,7 +145,7 @@ const WebPage = () => {
           refreshPlayers={refreshPlayers}
         />
       )}
-      <Chat />
+      <Chat playerName={players[currentPlayerIndex]?.name || "Anonymous"}/>
       <Board players={players} setPlayers={setPlayers} setSelectedPawnId={setSelectedPawnId}/>
       <ExitGameButton onExitGame={deletePlayer} colour={playerColour} />
       <div className="cube-container" style={cubePosition}>

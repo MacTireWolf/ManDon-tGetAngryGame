@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/atoms/BlueVerticalCells.css";
 
-const BlueVerticalCells = () => {
+const BlueVerticalCells = ({positions}) => {
   const cells = [
     { id: 1, className: "normal" },
     { id: 2, className: "normal", content: ">" },
@@ -27,6 +27,9 @@ const BlueVerticalCells = () => {
     <div className="grid-container-blue">
       {cells.map((cell) => (
         <div key={cell.id} className={`grid-item ${cell.className}`}>
+          {positions.includes(cell.id) && (
+            <span className="pawn"></span>
+          )}
           {cell.content && <span className="blue-arrow">{cell.content}</span>}
         </div>
       ))}
