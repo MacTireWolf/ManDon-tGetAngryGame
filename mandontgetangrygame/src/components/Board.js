@@ -7,7 +7,7 @@ import YellowHorizontalCells from "../atoms/YellowHorizontalCells";
 import BlueVerticalCells from "../atoms/BlueVerticalCells";
 import GreenVerticalCells from "../atoms/GreenVerticalCells";
 
-const Board = ({ players, setSelectedPawnId  }) => {
+const Board = ({ players, setSelectedPawnId, movedPawns, handlePawnMove  }) => {
   const [playersNames, setPlayerNames] = useState({
     red: "",
     blue: "",
@@ -35,10 +35,10 @@ const Board = ({ players, setSelectedPawnId  }) => {
 
   return (
     <div className="Board">
-      <Square colour="red" style={{ top: 0, left: 0 }} playerName={playersNames.red} pawns={players.find(p => p.colour === "red")?.pawns} setSelectedPawnId={setSelectedPawnId} />
-      <Square colour="blue" style={{ top: 0, right: 0 }} playerName={playersNames.blue} pawns={players.find(p => p.colour === "blue")?.pawns} setSelectedPawnId={setSelectedPawnId} />
-      <Square colour="green" style={{ bottom: 0, left: 0 }} playerName={playersNames.green} pawns={players.find(p => p.colour === "green")?.pawns} setSelectedPawnId={setSelectedPawnId} />
-      <Square colour="yellow" style={{ bottom: 0, right: 0 }} playerName={playersNames.yellow} pawns={players.find(p => p.colour === "yellow")?.pawns} setSelectedPawnId={setSelectedPawnId} />
+      <Square colour="red" style={{ top: 0, left: 0 }} playerName={playersNames.red} pawns={players.find(p => p.colour === "red")?.pawns} setSelectedPawnId={setSelectedPawnId} movedPawns={movedPawns} handlePawnMove={handlePawnMove} />
+      <Square colour="blue" style={{ top: 0, right: 0 }} playerName={playersNames.blue} pawns={players.find(p => p.colour === "blue")?.pawns} setSelectedPawnId={setSelectedPawnId} movedPawns={movedPawns} handlePawnMove={handlePawnMove} />
+      <Square colour="green" style={{ bottom: 0, left: 0 }} playerName={playersNames.green} pawns={players.find(p => p.colour === "green")?.pawns} setSelectedPawnId={setSelectedPawnId} movedPawns={movedPawns} handlePawnMove={handlePawnMove} />
+      <Square colour="yellow" style={{ bottom: 0, right: 0 }} playerName={playersNames.yellow} pawns={players.find(p => p.colour === "yellow")?.pawns} setSelectedPawnId={setSelectedPawnId} movedPawns={movedPawns} handlePawnMove={handlePawnMove} />
       <Center />
       <div className="horizontal-cells-container">
         <RedHorizontalCells positions={getPawnPositions("red")}/>

@@ -19,7 +19,16 @@ const WebPage = () => {
   const [dots, setDots] = useState(3);
   const [isRolling, setIsRolling] = useState(false);
   const [selectedPawnId, setSelectedPawnId] = useState(null);
+  const [movedPawns, setMovedPawns] = useState({});
 
+  const handlePawnMove = (pawnId) => {
+    const currentPlayer = players[currentPlayerIndex];
+    setMovedPawns((prev) => ({
+      ...prev,
+      [currentPlayer.colour] : [...(prev)[currentPlayer.colour] || [], pawnId],
+    }));
+  };
+  
   const handleCloseModal = (newPlayers) => {
     setIsModalOpen(false);
     setPlayers((prevPlayers) => [...prevPlayers, ...newPlayers]);
@@ -79,6 +88,24 @@ const WebPage = () => {
       return;
     }
 
+    selectedPawn.position +=dots;
+
+    const  updatedPawns = currentPlayer.pawns.map((pawn) => 
+    pawn.id === pawnId ? {...pawn, position: selectedPawn.position} : pawn);
+    const updatedPlayer = {...currentPlayer, pawns: updatedPawns};
+
+    setPlayers((prevPlayers) =>
+      prevPlayers.map((player) =>
+      player.colour === updatedPlayer.colour ? updatedPlayer : player
+    ));
+
+    setMovedPawns((prev) => ({
+      ...prev,
+    [currentPlayer.colour]: [...(prev[currentPlayer.colour] || []), pawnId],
+    }))
+    setSelectedPawnId(null);
+    setIsRolling(false);
+
     const requestData = {
       colour: currentPlayer.colour,
       pawnId: pawnId,
@@ -93,8 +120,14 @@ const WebPage = () => {
         setPlayers((prevPlayers) =>
         prevPlayers.map((player) => 
         player.colour === updatedPlayer.colour ? updatedPlayer : player));
+        setMovedPawns((prev) => ({
+          ...prev,
+          [currentPlayer.colour]: [...(prev[currentPlayer.colour] || []), pawnId],
+        }));
+        setSelectedPawnId(null);
         setIsRolling(false);
-        console.log("Updated players after move:", players);
+        
+
         if(dots === 6 || selectedPawn.position !== 0){
           nextPlayer();
         }
@@ -112,7 +145,6 @@ const WebPage = () => {
       return newIndex;
     });
     setDots(3);
-    setTimeout(() => setSelectedPawnId(null), 100);
   };
 
   console.log("Selected Pawn ID:", selectedPawnId);
@@ -145,8 +177,8 @@ const WebPage = () => {
           refreshPlayers={refreshPlayers}
         />
       )}
-      <Chat playerName={players[currentPlayerIndex]?.name || "Anonymous"}/>
-      <Board players={players} setPlayers={setPlayers} setSelectedPawnId={setSelectedPawnId}/>
+      <Chat playerName={playerColour}/>
+      <Board players={players} setPlayers={setPlayers} setSelectedPawnId={setSelectedPawnId} movedPawns={movedPawns} handlePawnMove={handlePawnMove}/>
       <ExitGameButton onExitGame={deletePlayer} colour={playerColour} />
       <div className="cube-container" style={cubePosition}>
         <Cube dots={dots} onClick={handleCubeClick} disabled={isRolling} />
