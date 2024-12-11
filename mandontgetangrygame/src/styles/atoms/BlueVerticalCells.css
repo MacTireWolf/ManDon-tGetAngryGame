@@ -12,6 +12,7 @@
     align-items: center;
     border: 1px solid #ccc;
     padding: 5px;
+    position: relative;
 }
 
 .grid-container-blue .grid-item.highlight {

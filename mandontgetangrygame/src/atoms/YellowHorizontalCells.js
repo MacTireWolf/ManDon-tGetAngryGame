@@ -1,7 +1,8 @@
 import React from "react";
 import "../styles/atoms/YellowHorizontalCells.css";
+import Pawn from "./Pawn";
 
-const YellowHorizontalCells = ({positions}) => {
+const YellowHorizontalCells = ({positions, playerColour}) => {
   const cells = [
     { id: 1, className: "normal" },
     { id: 2, className: "normal" },
@@ -28,7 +29,11 @@ const YellowHorizontalCells = ({positions}) => {
       {cells.map((cell) => (
         <div key={cell.id} className={`grid-item ${cell.className}`}>
           {positions.includes(cell.id) && (
-            <span className="pawn"></span>
+            <Pawn
+              colour={playerColour}
+              id={cell.id}
+              className="smaller"
+            />
           )}
           {cell.content && <span className="yellow-arrow">{cell.content}</span>}
         </div>

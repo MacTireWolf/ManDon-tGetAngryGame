@@ -8,11 +8,20 @@
     height: 210px;
     transform: translateY(-3px);
 }
-  
+
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 5px;
+    position: relative;
+}
+
 .grid-container-yellow .grid-item.highlight {
     background-color: var(--PrettyYellow);
 }
-  
+
 .grid-container-yellow .grid-item.normal {
     background-color: white;
 }
@@ -21,5 +30,4 @@
     font-size: 32px;
     color: var(--PrettyYellow);
     text-align: center;
-  }
-  
+}

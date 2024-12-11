@@ -94,7 +94,7 @@ const WebPage = () => {
         prevPlayers.map((player) => 
         player.colour === updatedPlayer.colour ? updatedPlayer : player));
         setIsRolling(false);
-
+        console.log("Updated players after move:", players);
         if(dots === 6 || selectedPawn.position !== 0){
           nextPlayer();
         }

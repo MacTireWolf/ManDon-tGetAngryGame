@@ -1,32 +1,33 @@
 .grid-container-red {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(3, 46px);
-    width: 279px;
-    height: 210px;
-    transform: translateY(-3px);
-  }
-  
-  .grid-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ccc;
-    padding: 5px;
-  }
-  
-  .grid-item.highlight {
-    background-color: red;
-    color: black;
-  }
-  
-  .grid-item.normal {
-    background-color: white;
-    color: black;
-  }
-  
-  .red-arrow {
-    font-size: 32px;
-    color: red;
-    text-align: center;
-  }
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 46px);
+  width: 279px;
+  height: 210px;
+  transform: translateY(-3px);
+}
+
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 5px;
+  position: relative;
+}
+
+.grid-item.highlight {
+  background-color: red;
+  color: black;
+}
+
+.grid-item.normal {
+  background-color: white;
+  color: black;
+}
+
+.red-arrow {
+  font-size: 32px;
+  color: red;
+  text-align: center;
+}
