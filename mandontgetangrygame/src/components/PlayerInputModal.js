@@ -47,11 +47,7 @@ const PlayerInputModal = ({ onClose, refreshPlayers }) => {
         );
 
         if (failures.length > 0) {
-          alert(
-            `Niektóre kolory zostały zajęte przez innych graczy: ${failures
-              .map((f) => JSON.parse(f.reason.config.data).colour)
-              .join(", ")}.`
-          );
+          alert("Niektóre kolory zostały zajęte przez innych graczy.")
         }
 
         refreshPlayers();

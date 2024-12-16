@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/atoms/BlueVerticalCells.css";
 import Pawn from "./Pawn";
 
-const BlueVerticalCells = ({positions, playerColour}) => {
+const BlueVerticalCells = ({positions, playerColour, pawns = [], setSelectedPawnId}) => {
   const cells = [
     { id: 1, className: "normal" },
     { id: 2, className: "normal", content: ">" },
@@ -28,13 +28,17 @@ const BlueVerticalCells = ({positions, playerColour}) => {
     <div className="grid-container-blue">
       {cells.map((cell) => (
         <div key={cell.id} className={`grid-item ${cell.className}`}>
-         {positions.includes(cell.id) && (
-            <Pawn
-              colour={playerColour}
-              id={cell.id}
-              className="smaller"
-            />
-          )}
+          {pawns.map((pawn) => (
+            positions.includes(cell.id) && pawn.position === cell.id ? (
+              <Pawn
+                key={pawn.id}
+                colour={playerColour}
+                id={pawn.id}
+                onSelect={() => setSelectedPawnId(pawn.id)}
+                className={`smaller ${playerColour}`}
+              />
+            ) : null
+          ))}
           {cell.content && <span className="blue-arrow">{cell.content}</span>}
         </div>
       ))}
