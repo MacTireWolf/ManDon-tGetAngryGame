@@ -41,12 +41,12 @@ const Board = ({ players, setSelectedPawnId, movedPawns, handlePawnMove  }) => {
       <Square colour="yellow" style={{ bottom: 0, right: 0 }} playerName={playersNames.yellow} pawns={players.find(p => p.colour === "yellow")?.pawns} setSelectedPawnId={setSelectedPawnId} movedPawns={movedPawns} handlePawnMove={handlePawnMove} />
       <Center />
       <div className="horizontal-cells-container">
-        <RedHorizontalCells positions={getPawnPositions("red")} setSelectedPawnId={setSelectedPawnId} pawns={players.find(p => p.colour === "red")?.pawns} />
-        <YellowHorizontalCells positions={getPawnPositions("yellow")} setSelectedPawnId={setSelectedPawnId} pawns={players.find(p => p.colour === "yellow")?.pawns} />
+        <RedHorizontalCells playerColour="red" positions={getPawnPositions("red")} setSelectedPawnId={setSelectedPawnId} pawns={players.find(p => p.colour === "red")?.pawns} />
+        <YellowHorizontalCells playerColour="yellow" positions={getPawnPositions("yellow")} setSelectedPawnId={setSelectedPawnId} pawns={players.find(p => p.colour === "yellow")?.pawns} />
       </div>
       <div className="vertical-cells-container">
-        <BlueVerticalCells positions={getPawnPositions("blue")} setSelectedPawnId={setSelectedPawnId} pawns={players.find(p => p.colour === "blue")?.pawns} />
-        <GreenVerticalCells positions={getPawnPositions("green")} setSelectedPawnId={setSelectedPawnId} pawns={players.find(p => p.colour === "green")?.pawns} />
+        <BlueVerticalCells playerColour="blue" positions={getPawnPositions("blue")} setSelectedPawnId={setSelectedPawnId} pawns={players.find(p => p.colour === "blue")?.pawns} />
+        <GreenVerticalCells playerColour="green" positions={getPawnPositions("green")} setSelectedPawnId={setSelectedPawnId} pawns={players.find(p => p.colour === "green")?.pawns} />
       </div>
     </div>
   );

@@ -40,9 +40,9 @@ public class Player {
         if (pawn.getPosition() == 0 && steps == 6) {
             switch (colour) {
                 case "red": pawn.setPosition(2); break;
-                case "blue": pawn.setPosition(6); break;
+                case "blue": pawn.setPosition(14); break;
                 case "yellow": pawn.setPosition(17); break;
-                case "green": pawn.setPosition(13); break;
+                case "green": pawn.setPosition(5); break;
             }
         } else {
             pawn.setPosition(pawn.getPosition() + steps);

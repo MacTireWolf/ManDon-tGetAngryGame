@@ -81,6 +81,7 @@ const WebPage = () => {
     setIsRolling(true);
     sendMoveRequest(randomDots, selectedPawnId);
   };
+  
 
   const sendMoveRequest = (dots, pawnId) => {
     const currentPlayer = players[currentPlayerIndex];

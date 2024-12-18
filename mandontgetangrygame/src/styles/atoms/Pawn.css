@@ -8,6 +8,8 @@
     box-shadow: 0 4px 7px rgba(0, 0, 0, 0.3);
     transform: translateX(10px);
     transition: all 0.3s ease;
+    isolation: isolate; /* Ensure the Pawn doesn't blend styles with parent */
+    z-index: 1; /* Ensure it visually sits on top */
 }
   
 .Pawn::before {
@@ -16,8 +18,7 @@
     top: -18px;
     left: 50%;
     width: 20px;
-    height: 20px;
-    background-color: inherit; 
+    height: 20px; 
     border-radius: 50%;
     transform: translateX(-50%);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
@@ -46,19 +47,68 @@
 }
   
 .Pawn.red {
-    background-color: red;
+    background-color: red !important;
+}
+
+.Pawn.red::before {
+    background-color: red !important;
+}
+
+.Pawn.smaller.red {
+    background-color: red !important;
+}
+
+.Pawn.smaller.red::before {
+    background-color: red !important;
 }
   
 .Pawn.blue {
-    background-color: blue;
+    background-color: blue !important;
 }
+
+.Pawn.blue::before {
+    background-color: blue !important;
+}
+
+.Pawn.smaller.blue {
+    background-color: blue !important;
+}
+
+.Pawn.smaller.blue::before {
+    background-color: blue !important;
+}
+
   
 .Pawn.green {
-    background-color: green;
+    background-color: green !important;
+}
+
+.Pawn.green::before {
+    background-color: green !important;
+}
+
+.Pawn.smaller.green {
+    background-color: green !important;
+}
+
+.Pawn.smaller.green::before {
+    background-color: green !important;
 }
   
 .Pawn.yellow {
-    background-color: var(--PrettyYellow);
+    background-color: var(--PrettyYellow) !important;
+}
+
+.Pawn.yellow::before {
+    background-color: var(--PrettyYellow) !important;
+}
+
+.Pawn.smaller.yellow {
+    background-color: var(--PrettyYellow) !important;
+}
+
+.Pawn.smaller.yellow::before {
+    background-color: var(--PrettyYellow) !important;
 }
   
   

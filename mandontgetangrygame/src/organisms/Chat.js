@@ -1,50 +1,47 @@
 import React, { useEffect, useState } from "react";
-import { Client } from "@stomp/stompjs";
 import "../styles/organisms/Chat.css";
-import SockJS from "sockjs-client";
 
 const Chat = ({ playerName }) => {
     const [messages, setMessages] = useState([]);
     const [currentMessage, setCurrentMessage] = useState("");
-    const [client, setClient] = useState(null);
+    const [ws, setWs] = useState(null);
+    const [connected, setConnected] = useState(false);
 
     useEffect(() => {
-        const newClient = new Client({
-            brokerURL: "ws://localhost:8080/chat-websocket",
-            webSocketFactory: () => new SockJS("http://localhost:8080/chat-websocket"),
-            onConnect: () => {
-                console.log("Connected to WebSocket.");
+        const socket = new WebSocket("ws://localhost:8081/chat");
 
-                newClient.subscribe("/topic/public", (messageOutput) => {
-                    const message = JSON.parse(messageOutput.body);
-                    setMessages((prevMessages) => [...prevMessages, message]);
-                });
-            },
-            onStompError: (error) => {
-                console.error("STOMP error:", error);
-            },
-        });
-
-        newClient.activate();
-        setClient(newClient);
-
-        return () => {
-            newClient.deactivate();
+        socket.onopen = () => {
+            console.log("Connected to WebSocket.");
+            setConnected(true);
         };
+
+        socket.onmessage = (event) => {
+            const message = JSON.parse(event.data);
+            setMessages((prevMessages) => [...prevMessages, message]);
+        };
+
+        socket.onerror = (error) => {
+            console.error("WebSocket error:", error);
+            setConnected(false);
+        };
+
+        socket.onclose = () => {
+            console.log("WebSocket connection closed.");
+            setConnected(false);
+        };
+
+        setWs(socket);
+
     }, []);
 
     const sendMessage = () => {
-        if (client && client.connected && currentMessage.trim()) {
+        if (ws && currentMessage.trim()) {
             const chatMessage = {
                 sender: playerName,
                 content: currentMessage,
             };
 
-            client.publish({
-                destination: "/app/sendMessage",
-                body: JSON.stringify(chatMessage),
-            });
-
+            ws.send(JSON.stringify(chatMessage));
             setCurrentMessage("");
         }
     };
@@ -65,6 +62,7 @@ const Chat = ({ playerName }) => {
                 onChange={(e) => setCurrentMessage(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && sendMessage()}
             />
+            {!connected && <p>Connecting to the chat server...</p>}
         </div>
     );
 };

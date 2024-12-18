@@ -4,6 +4,7 @@
     grid-template-rows: repeat(6, 43px);
     width: 140px;
     transform: translateY(-1px);
+    grid-auto-flow: column;
 }
 
 .grid-item {
