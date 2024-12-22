@@ -21,6 +21,8 @@ public class ChatServer {
     @OnMessage
     public void onMessage(String message, Session session) {
         try {
+            Thread textLogger = new Thread(new Logger(message));
+            textLogger.start();
             ChatMessage chatMessage = gson.fromJson(message, ChatMessage.class);
             for (Session s : sessions) {
                 if(s != session){
