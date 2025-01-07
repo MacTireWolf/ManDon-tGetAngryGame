@@ -38,5 +38,4 @@ public class ChatServer {
     public void onClose(Session session) {
         sessions.remove(session);
     }
-
 }

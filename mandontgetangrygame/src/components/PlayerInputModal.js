@@ -20,9 +20,7 @@ const PlayerInputModal = ({ onClose, refreshPlayers }) => {
   const handleJoinGame = () => {
     const playersToAdd = players.filter((p) => p.name && p.colour);
     const selectedColors = playersToAdd.map((p) => p.colour);
-    const duplicateColors = selectedColors.filter(
-      (color, index) => selectedColors.indexOf(color) !== index
-    );
+    const duplicateColors = selectedColors.filter((color, index) => selectedColors.indexOf(color) !== index);
 
     if (duplicateColors.length > 0) {
       alert(`Wybrano te same kolory dla wielu graczy. Każdy gracz musi wybrać unikalny kolor.`);

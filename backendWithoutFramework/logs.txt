@@ -1,4 +1,3 @@
-
 2024-12-22
 {"sender":"b","content":"hej"}
 2024-12-22
@@ -9,3 +8,9 @@
 {"sender":"a","content":"hej"}
 2024-12-22
 {"sender":"b","content":"hej"}
+2025-01-07
+{"sender":"Ania","content":"Hej"}
+2025-01-07
+{"sender":"Ola","content":"Siema"}
+2025-01-07
+{"sender":"Marek","content":"Hejka :)"}
